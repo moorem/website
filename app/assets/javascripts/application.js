@@ -19,3 +19,4 @@
 //= require view.home
 //= require theme.init
 //= require owl.carousel.min
+//= require jquery.themepunch.revolution.min
