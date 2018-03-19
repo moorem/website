@@ -13,4 +13,9 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require_tree .
+// require_tree .
+//= require theme
+//= require jquery.flipshow.min
+//= require view.home
+//= require theme.init
+//= require owl.carousel.min
