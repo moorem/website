@@ -14,13 +14,20 @@
 *= require_self
 */
 
-@import 'animate.min';
 @import "font-awesome-sprockets";
 @import "font-awesome";
-@import 'theme';
-@import 'theme-elements';
-@import 'component';
+@import 'animate.min';
+@import 'simple-line-icons.min';
 @import 'owl.carousel.min';
 @import 'owl.theme.default.min';
+@import 'magnific-popup.min';
+@import 'theme';
+@import 'theme-elements';
 @import 'theme-blog';
+@import 'theme-shop';
+@import 'settings';
+/* @import 'layers';
+@import 'navigation'; */
+@import 'component';
 @import 'default';
+@import 'custom';
