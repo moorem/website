@@ -531,7 +531,7 @@ window.theme.fn = {
 		effect: 'show',
 		appearEffect: '',
 		appear: function(elements_left, settings) {
-			
+
 		},
 		load: function(elements_left, settings) {
 			$(this).addClass($.trim('lazy-load-loaded ' + settings.appearEffect));
@@ -993,7 +993,7 @@ window.theme.fn = {
 			});
 
 			self.options.wrapper.waitForImages(function() {
-				self.options.wrapper.isotope(self.options);	
+				self.options.wrapper.isotope(self.options);
 			});
 
 			// IE10/11 fix
@@ -1792,13 +1792,13 @@ window.theme.fn = {
 			self.$destination.attr('data-filter', filter).isotope({
 				filter: currentFilter
 			}).one('arrangeComplete', function( event, filteredItems ) {
-				
+
 				if (self.options.useHash) {
 					if (window.location.hash != '' || self.options.filter.replace('.', '') != '*') {
 						window.location.hash = self.options.filter.replace('.', '');
 					}
 				}
-				
+
 				$(window).trigger('scroll');
 
 			}).trigger('filtered');
@@ -1901,9 +1901,9 @@ window.theme.fn = {
 
 // Sticky
 (function(theme, $) {
-	
+
 	theme = theme || {};
-	
+
 	var instanceName = '__sticky';
 
 	var PluginSticky = function($el, opts) {
@@ -1952,7 +1952,7 @@ window.theme.fn = {
 
 			var self = this,
 				$window = $(window);
-			
+
 			self.options.wrapper.pin(self.options);
 
 			$window.afterResize(function() {
@@ -1960,7 +1960,7 @@ window.theme.fn = {
 				self.options.wrapper.pin(self.options);
 				$window.trigger('scroll');
 			});
-			
+
 			return this;
 		}
 	};
@@ -1980,7 +1980,7 @@ window.theme.fn = {
 			} else {
 				return new PluginSticky($this, opts);
 			}
-			
+
 		});
 	}
 
@@ -2145,97 +2145,6 @@ window.theme.fn = {
 
 }).apply(this, [window.theme, jQuery]);
 
-// Tweets
-(function(theme, $) {
-
-	theme = theme || {};
-
-	var instanceName = '__tweets';
-
-	var PluginTweets = function($el, opts) {
-		return this.initialize($el, opts);
-	};
-
-	PluginTweets.defaults = {
-		username: null,
-		count: 2,
-		URL: 'php/twitter-feed.php'
-	};
-
-	PluginTweets.prototype = {
-		initialize: function($el, opts) {
-			if ($el.data(instanceName)) {
-				return this;
-			}
-
-			this.$el = $el;
-
-			this
-				.setData()
-				.setOptions(opts)
-				.build();
-
-			return this;
-		},
-
-		setData: function() {
-			this.$el.data(instanceName, this);
-
-			return this;
-		},
-
-		setOptions: function(opts) {
-			this.options = $.extend(true, {}, PluginTweets.defaults, opts, {
-				wrapper: this.$el
-			});
-
-			return this;
-		},
-
-		build: function() {
-			if (this.options.username == null || this.options.username == '') {
-				return this;
-			}
-
-			var self = this,
-				$wrapper = this.options.wrapper;
-
-			$.ajax({
-				type: 'GET',
-				data: {
-					twitter_screen_name: self.options.username,
-					tweets_to_display: self.options.count
-				},
-				url: self.options.URL,
-			}).done(function(html) {
-				$wrapper.html(html).find('a').attr('target','_blank');
-			});
-
-			return this;
-		}
-	};
-
-	// expose to scope
-	$.extend(theme, {
-		PluginTweets: PluginTweets
-	});
-
-	// jquery plugin
-	$.fn.themePluginTweets = function(opts) {
-		return this.map(function() {
-			var $this = $(this);
-
-			if ($this.data(instanceName)) {
-				return $this.data(instanceName);
-			} else {
-				return new PluginTweets($this, opts);
-			}
-
-		});
-	}
-
-}).apply(this, [window.theme, jQuery]);
-
 // Validation
 (function(theme, $) {
 
@@ -2336,7 +2245,7 @@ window.theme.fn = {
 					e.preventDefault();
 					$.get(self.options.refreshCaptchaURL, function(url) {
 						$('#captcha-image').attr('src', url);
-					});					
+					});
 				});
 
 			},
@@ -2446,9 +2355,9 @@ window.theme.fn = {
 
 // Word Rotator
 (function(theme, $) {
-	
+
 	theme = theme || {};
-	
+
 	var instanceName = '__wordRotator';
 
 	var PluginWordRotator = function($el, opts) {
@@ -2505,7 +2414,7 @@ window.theme.fn = {
 				.width(firstItem.width() + "px")
 				.append(firstItemClone);
 
-			$el				
+			$el
 				.addClass("active");
 
 			setInterval(function() {
@@ -2554,7 +2463,7 @@ window.theme.fn = {
 			} else {
 				return new PluginWordRotator($this, opts);
 			}
-			
+
 		});
 	}
 
@@ -2761,7 +2670,7 @@ window.theme.fn = {
 								e.preventDefault();
 
 								var li = $(this).closest('li');
-								
+
 								if(e.handled !== true) {
 
 									if(li.hasClass('tapped')) {
@@ -2776,7 +2685,7 @@ window.theme.fn = {
 								}
 
 								li.addClass('open');
-								
+
 								return false;
 
 							}
@@ -2792,7 +2701,7 @@ window.theme.fn = {
 					$(this).parents('.collapse').removeClass('in');
 				});
 
-				
+
 				// Set Header Body Height when open mobile menu
 				$('.header-nav-main nav').on('show.bs.collapse', function () {
 				 	$('.header-body').animate({
@@ -2812,7 +2721,7 @@ window.theme.fn = {
 				// Side Header - Change value of initial header body height
 				if( $window.width() > 991 ) {
 					var flag = false;
-					
+
 					$window.afterResize(function(){
 
 						if( $window.width() < 992 && flag == false ) {
@@ -3120,7 +3029,7 @@ window.theme.fn = {
 						self.deactivateStickyHeader();
 					}
 				};
-				
+
 				// Activate Sticky Header
 				self.activateStickyHeader = function() {
 
@@ -3190,7 +3099,7 @@ window.theme.fn = {
 
 					self.changeLogo = function(activate) {
 						if(activate) {
-							
+
 							$logo.css({
 								'top': logoSmallTop,
 								'width': logoSmallWidth,
@@ -3198,7 +3107,7 @@ window.theme.fn = {
 							});
 
 						} else {
-							
+
 							$logo.css({
 								'top': 0,
 								'width': logoWidth,
