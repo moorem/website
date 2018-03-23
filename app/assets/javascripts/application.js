@@ -37,3 +37,4 @@
 //= require view.home
 //= require custom
 //= require theme.init
+//= require analytics
